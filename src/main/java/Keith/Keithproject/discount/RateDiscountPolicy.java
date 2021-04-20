@@ -2,7 +2,9 @@ package Keith.Keithproject.discount;
 
 import Keith.Keithproject.member.Grade;
 import Keith.Keithproject.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private int discountPercent =10;

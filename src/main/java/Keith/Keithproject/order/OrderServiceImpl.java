@@ -5,12 +5,18 @@ import Keith.Keithproject.discount.FixDiscountPolicy;
 import Keith.Keithproject.member.Member;
 import Keith.Keithproject.member.MemberRepository;
 import Keith.Keithproject.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+
+
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
@@ -24,6 +30,12 @@ public class OrderServiceImpl implements OrderService{
 
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+
+
+    //테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
 

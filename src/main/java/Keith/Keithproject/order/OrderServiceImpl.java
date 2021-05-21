@@ -5,22 +5,18 @@ import Keith.Keithproject.discount.FixDiscountPolicy;
 import Keith.Keithproject.member.Member;
 import Keith.Keithproject.member.MemberRepository;
 import Keith.Keithproject.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor //Ctrl +F12 = final 이 붙은 필드를 모아서 생성자를 자동으로 만들어줌(룸북의 기능임)
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
 
-
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
 
     //주문이 들어오면!!
     @Override
@@ -35,6 +31,7 @@ public class OrderServiceImpl implements OrderService{
 
     //테스트 용도
     public MemberRepository getMemberRepository() {
+
         return memberRepository;
     }
 }
